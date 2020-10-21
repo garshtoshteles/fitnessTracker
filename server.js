@@ -11,7 +11,8 @@ app.use(express.urlencoded({ extended: !0 })),
     useCreateIndex: !0,
     useFindAndModify: !1,
   }),
-  app.use(require("./routes/allRoutes.js")), // don't forget to make sure this connects properly
+  app.use(require("./routes/apiRoutes.js")),
+  app.use(require("./routes/htmlRoutes.js")),
   app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
   });

@@ -1,12 +1,9 @@
-let mongoose = require("mongoose");
-let db = require("../models");
-// DONT FORGET TO REQUIRE SCHEMA
-
+let mongoose = require("mongoose"),
+  db = require("../models");
 mongoose.connect("mongodb://localhost/workout", {
-  useNewUrlParser: true,
-  useFindAndModify: false,
+  useNewUrlParser: !0,
+  useFindAndModify: !1,
 });
-
 let workoutSeed = [
   {
     day: new Date().setDate(new Date().getDate() - 10),
@@ -49,14 +46,7 @@ let workoutSeed = [
   },
   {
     day: new Date().setDate(new Date().getDate() - 7),
-    exercises: [
-      {
-        type: "cardio",
-        name: "Running",
-        duration: 25,
-        distance: 4,
-      },
-    ],
+    exercises: [{ type: "cardio", name: "Running", duration: 25, distance: 4 }],
   },
   {
     day: new Date().setDate(new Date().getDate() - 6),
@@ -124,14 +114,11 @@ let workoutSeed = [
     ],
   },
 ];
-
 db.Workout.deleteMany({})
   .then(() => db.Workout.collection.insertMany(workoutSeed))
-  .then((data) => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
+  .then((a) => {
+    console.log(a.result.n + " records inserted!"), process.exit(0);
   })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
+  .catch((a) => {
+    console.error(a), process.exit(1);
   });
