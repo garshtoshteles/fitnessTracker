@@ -1,5 +1,5 @@
 let mongoose = require("mongoose"),
-  db = require("../models");
+  db = require("../schemas/workoutModel.js");
 mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: !0,
   useFindAndModify: !1,
@@ -114,6 +114,8 @@ let workoutSeed = [
     ],
   },
 ];
+console.log(db);
+console.log(db.model);
 db.Workout.deleteMany({})
   .then(() => db.Workout.collection.insertMany(workoutSeed))
   .then((a) => {
